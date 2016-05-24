@@ -1,0 +1,105 @@
+1. A class can have other classes as components, which is called containment. For example, we have Option class in OptionSet class.
+
+2. Classes with similar functions should be put in the same package. For example, IEditThread interface class and EditOptions class are in scale package.
+
+3. Encapsulation can protect data field class from outside. For example, we set variables in class as private. We can only access them through getter and setter methods.
+
+4. Protected class can make sure that the methods can only be accessed by classes in the same package. For example, the OptionSet class and Option class can only be accessed in Automobile class.
+
+5. Inner class is good for object-oriented design. It makes class more safe and compact. For example, we have inner class Option in OptionSet class. So Automobile don’t need to know the detail of Option, it can access Option through OptionSet class methods.
+
+6. StringBuilder should be used when several strings need to be concatenated. It has better performance than String.
+
+7. It’s important to design class diagrams before writing the code. This can help you have a more clear scheme of the whole project and decrease your time of changing design when writing.
+
+8. Analyze data first before design objects. For the car object, each car has many group of options to configure, so we have design OptionSet class. And for each OptionSet, there are several options need to be configured, so we design Option class.
+
+9. Have good naming convention makes it easy for coding and debuging. And also it’s good for others to read your code. For example, variables should be “noun” and methods should be a action. So people can recognize their functions easily.
+
+10. Design according to function. For example, we have FileIO to operate files in Util package. And I also have DatabaseIO to operate database in Util package.
+
+11. Cover all the possible input and methods when design class. This can make class more reusable and convenient for later use. You don’t need to modify class every time you change the input.
+
+12. It’s a good habit to make declarations at the beginning of body. This can make your code more readable and make it easier to find variables when you want to modify them.
+
+13. Modularity is important for design. This can make the code easy to maintain. If you want to modify the code, you only need to modify part of the code without changing other classes.
+
+14. Use BufferedReader and BufferedWriter to read and write files. Because you don’t know how large is the file, it may exceed your memory if you read the whole file at one time.
+
+15. Use Serialization to save object to disk. You can do this by implement Serializable in object class, and then using object stream to write to disk.
+
+16. Use LinkedHashMap to save Automobile objects. The LinkedHashMap are key-value pairs. The key is applied with hash function to save value in memory. The LinkedHashMap maintains the order of objects when added compared to HashMap. So it’s scalable to use LinkedHashMap on Automobile objects.
+
+17. Inheritance is a class derives from an existing class. For example, “Accord” can extends “Automobile”, “Accord” inherits all the features of “Automobile”.
+
+18. The interface can play as API in program. For example, the IEditThread interface is implemented by BuildAuto and the method is in ProxyAutomobile class. This is because method in ProxyAutomobile should be accessed internally. By this design, I can create an API to expose ProxyAutomotive class through BuildAuto and IEditThread interface.
+
+19. Interface can be multi-inherited. For example, BuildAuto class implement ICreateAuto, IUpdateAuto and IFixAuto interfaces. So the BuildAuto can inherit multiple methods.
+
+20. Interface can limit scope of methods of object. For example, ICreateAuto createAuto = new BuildAuto(), in this case you can only access methods declared in ICreateAuto interface, which hide other methods in BuildAuto.
+
+21. Use abstract class to hide internal implementation. For example, we use ProxyAutomobile to implement all the methods BuildAuto inherits. So the abstract class can protect internal implementation from outside.
+
+22. Use ArrayList instead of array. ArrayList can maintain the order of object added. It’s more convenient than array because it can change its size dynamically.
+
+23. Static can make objects shared in the same class. For example, we use static LinkedHashMap for Automobile objects. So all the BuildAuto instances can access the same LinkedHashMap.
+
+24. Writing log is important to record bugs. For example, I record the time and the detail of exception to the log file. So I can inspect all those exceptions after the program is stop. This is especially useful for long-running program.
+
+25. Writing exception handling is also a good habit. Because sometimes it’s not easy to configure the exact reason of runtime exceptions. So you can design your own exception to report bugs. 
+
+26. Writing self-healing methods to fix exception. Sometimes it’s not enough to just catch the exception and stop program. For example, you can read in default file when the file name is missing, so the program can continue running.
+
+27. Use Enumeration instead of numbers or strings. Enumeration is useful when you want to represent items in a collection. For example, if we use numbers to represent AutoException types, it would be hard to remember which number represent which exception. With Enumeration, it makes code easy to read and write.
+
+28. Use try-catch-finally block instead of just throw exceptions. Try-catch-finally is a good way to handle possible exceptions. And the finally block is useful when you encounter a exception. For example, if you encounter a exception when read file using file stream, you can still close the stream in finally block.
+
+29. Use Thread.sleep to pause the thread. For example, I use Thread.sleep to wait for connection established between client and server.
+
+30. The race condition means several threads want to change the shared resource at the same time. For example, when two threads want to change the name of same OptionSet, the result should be caused by the last change.
+
+31. The deadlock means two threads each lock a variable and then try to get the variable that the other thread already locked. So they will wait for each other release the resource forever.
+
+32. Use synchronization for race condition. In Java you can use “synchronized” to prevent race condition, it can make sure that only one thread access the block at a time.
+
+33. We should limit the scope of synchronization as much as possible. Because synchronization will slow down the multi-threaded program. One thread must wait for another thread when encounter the synchronization.
+
+34. Properties file is another format of file we can use. In java we can use Properties object to load properties file, which is convenient.
+
+35. For Server-Client application, server should be always started first, and wait for client to connect with it. If server is multi-threaded, it should use a while loop to wait different client to connect it.
+
+36. Socket is a link between client and server. It mainly use hostname and port to connect. For example, the server uses server socket listening on a port, and the client using server’s ip address and port to connect with server.
+
+37. Socket port number should be larger than 256. Because port numbers less than 256 are reserved for well-known services, like port 80 is for HTTP.
+
+38. The socket communication usually use input stream and output stream. For example, when we want to send Properties object from client to server, we use object output/input stream.
+
+39. Use Scanner to read System.in and interact with users. For client, client must give choice menu to users and then read in users’ instructions through console.
+
+40. The procedure of session of client and that of server are similar. They both need OpenSession(), HandleSession() and CloseSession(). The HandleSession should be overwritten because client should interact with user and server, and server should only interact with client.
+
+41. A servlet is written in Java only. And it has annotation WebServlet to bind with a URL. When you open the URL of servlet, it would be called to run.
+
+42. JSP is mainly an HTML page, but it can combine with Java language to generate web page dynamically.
+
+43. Tomcat is an open source web server and servlet container. It needs to be downloaded manually and configure with Eclipse. When it is configured successfully, the default localhost page is http://localhost:8080/
+
+44. Use auto_increment for id in database schema. Because that is more safe than increasing id manually. You can get generated id by setting Statement.RETURN_GENERATED_KEYS as parameter of PreparedStatement.
+
+45. Use “ON DELETE CASCADE” when creating table, which can make delete operation easier. When you delete a record in automobile table, the corresponding optionset and options will also be deleted. 
+
+46. Properties file is also useful in saving sql command. You can load properties and get corresponding sql command to execute. This can improve modifiability. You don’t need to repeat writing SQL.
+
+47. Use PreparedStatement can set parameters to sql command. For example, “DeleteModel=DELETE FROM automobile WHERE (model = ?)”, the ‘?’ can be set in PreparedStatement, which make it easy to modify sql command.
+
+48. We can use response.getWriter() in doGet() and doPost() method, and write HTML to the writer to display a web page.
+
+49. We can use HTTP session to transfer object from servlet to JSP. For example, session.setAttribute(“name”, object) can save the object in session, and session.getAttribute(“name”, object) can get the object from session.
+
+50. In HTML, the Action of a button can be set as a url, when you click the button, it will jump to another page.
+
+51. A primary key is a unique field in table which can identify each record. A table can only have one primary key and it’s not null. Usually, it can be set as a auto_increment id.
+
+52. A foreign key is a field references a field of another table. It’s usually the primary key of another table.
+
+53. The return of executeQuery() and executeUpdate() is a ResultSet, we should use a while loop to iterate the ResultSet to get all the results.

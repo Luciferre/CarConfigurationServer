@@ -1,0 +1,164 @@
+======================= Unit1 ===========================
+
+a. What were you asked to change?
+(-1) Update, delete option not demonstrated in output
+b. How many points were taken off?
+1
+c. What changes were made in what files?
+I add DriverUnit1.java in Driver package to demonstrate.
+d. Show test cases for changes made (if applicable).
+As the DriverUnit1.java shows, I update optionset “Transmission” to “Trans”, then delete optionset “Color”.
+The output are as follows:
+
+The original automobile:
+Name: Focus Wagon ZTW
+Base Price: 18445.0
+Color: Fort Knox Gold Clearcoat Metallic, 0.0; Liquid Grey Clearcoat Metallic, 0.0; Infra-Red Clearcoat, 0.0; Grabber Green Clearcoat Metallic, 0.0; Sangria Red Clearcoat Metallic, 0.0; French Blue Clearcoat Metallic, 0.0; Twilight Blue Clearcoat Metallic, 0.0; CD Silver Clearcoat Metallic, 0.0; Pitch Black Clearcoat, 0.0; Cloud 9 White Clearcoat, 0.0
+Transmission: automatic, 0.0; manual, -815.0
+Brakes/Traction Control: Standard, 0.0; ABS, 400.0; ABS with Advance Trac, 1625.0
+Side Impact Air Bags: present, 350.0; not present, 0.0
+Power Moonroof: present, 595.0; not present, 0.0
+
+The updated automobile:
+Name: Focus Wagon ZTW
+Base Price: 18445.0
+Trans: automatic, 0.0; manual, -815.0
+Brakes/Traction Control: Standard, 0.0; ABS, 400.0; ABS with Advance Trac, 1625.0
+Side Impact Air Bags: present, 350.0; not present, 0.0
+Power Moonroof: present, 595.0; not present, 0.0
+e. In your opinion, how many points should be added back?
+1
+
+
+
+
+
+========================= Unit2 ============================
+a. What were you asked to change?
+-1 comments in code
+-2 self healing of exceptions is not done
+
+b. How many points were taken off?
+3
+
+c. What changes were made in what files?
+I already added the comments and changed the fixWrongFileName() method to self healing in FixHelper.java.
+
+d. Show test cases for changes made (if applicable).
+As DriverUnit2.java shows, I tried to read in a non-exist file.
+The output is:
+
+Cannot find the file! Read in the default file.
+Default automobile:
+Model: Focus Wagon ZTW
+Make: Ford
+Base Price: 18445.0
+Color: Fort Knox Gold Clearcoat Metallic, 0.0; Liquid Grey Clearcoat Metallic, 0.0; Infra-Red Clearcoat, 0.0; Grabber Green Clearcoat Metallic, 0.0; Sangria Red Clearcoat Metallic, 0.0; French Blue Clearcoat Metallic, 0.0; Twilight Blue Clearcoat Metallic, 0.0; CD Silver Clearcoat Metallic, 0.0; Pitch Black Clearcoat, 0.0; Cloud 9 White Clearcoat, 0.0
+Transmission: Automatic, 0.0; Standard, -815.0
+Brakes/Traction Control: Standard, 0.0; ABS, 400.0; ABS with Advance Trac, 1625.0
+Side Impact Air Bags: Selected, 350.0; None, 0.0
+Power Moonroof: Selected, 595.0; None, 0.0
+
+e. In your opinion, how many points should be added back?
+3
+
+
+
+
+
+======================== Unit3 ==========================
+a. What were you asked to change?
+-0.5 interface between edit options and build auto not implemented in scale package
+-1 object locking in automobile class not implemented
+-1 data corruption(on removing synchronization) is not demonstrated
+-1 documentation should elaborate design choices
+-1 testing/output for threads??
+
+b. How many points were taken off?
+4.5
+
+c. What changes were made in what files?
+I moved IEditThread.java to scale package.
+I removed the synchronization and demonstrated data corruption in DriverUnit3.
+I improved the output format to see synchronization more easily.
+I improved documentation.
+
+d. Show test cases for changes made (if applicable).
+Here is synchronized output:
+The original automobile:
+Model: Focus Wagon ZTW
+Make: Ford
+Base Price: 18445.0
+Color: Fort Knox Gold Clearcoat Metallic, 0.0; Liquid Grey Clearcoat Metallic, 0.0; Infra-Red Clearcoat, 0.0; Grabber Green Clearcoat Metallic, 0.0; Sangria Red Clearcoat Metallic, 0.0; French Blue Clearcoat Metallic, 0.0; Twilight Blue Clearcoat Metallic, 0.0; CD Silver Clearcoat Metallic, 0.0; Pitch Black Clearcoat, 0.0; Cloud 9 White Clearcoat, 0.0
+Transmission: Automatic, 0.0; Standard, -815.0
+Brakes/Traction Control: Standard, 0.0; ABS, 400.0; ABS with Advance Trac, 1625.0
+Side Impact Air Bags: Selected, 350.0; None, 0.0
+Power Moonroof: Selected, 595.0; None, 0.0
+
+Thread 1 edit "Power Moonroof:Selected" price:
+Selected, 100.0; None, 0.0
+Thread 1 end editing option price.....
+Thread 2 start editing option price.....
+Thread 2 edit "Power Moonroof:Selected" price:
+Selected, 200.0; None, 0.0
+Thread 2 end editing option price.....
+
+
+Here is removed synchronization output:
+The original automobile:
+Model: Focus Wagon ZTW
+Make: Ford
+Base Price: 18445.0
+Color: Fort Knox Gold Clearcoat Metallic, 0.0; Liquid Grey Clearcoat Metallic, 0.0; Infra-Red Clearcoat, 0.0; Grabber Green Clearcoat Metallic, 0.0; Sangria Red Clearcoat Metallic, 0.0; French Blue Clearcoat Metallic, 0.0; Twilight Blue Clearcoat Metallic, 0.0; CD Silver Clearcoat Metallic, 0.0; Pitch Black Clearcoat, 0.0; Cloud 9 White Clearcoat, 0.0
+Transmission: Automatic, 0.0; Standard, -815.0
+Brakes/Traction Control: Standard, 0.0; ABS, 400.0; ABS with Advance Trac, 1625.0
+Side Impact Air Bags: Selected, 350.0; None, 0.0
+Power Moonroof: Selected, 595.0; None, 0.0
+
+Thread 1 start editing option price.....
+Thread 2 start editing option price.....
+Thread 1 edit "Power Moonroof:Selected" price:
+Selected, 200.0; None, 0.0
+Thread 1 end editing option price.....
+Thread 2 edit "Power Moonroof:Selected" price:
+Selected, 200.0; None, 0.0
+Thread 2 end editing option price.....
+
+
+Here is new documentation:
+In this unit, I add IEditThread.java interface in scale package. The interface is implemented by BuildAuto and the method is in ProxyAutomobile class. This is because method in ProxyAutomobile should be accessed internally. By this design, I can create an API to expose ProxyAutomotive class through BuildAuto and IEditThread interface.
+
+The edit method in ProxyAutomobile creates a EditOptions class instance and starts a new edit method. I choose to design this because EditOptions needs to access automobile Linked HashMap internally, so the best place to implement this interaction is in ProxyAutomobile.
+
+In EditOptions class, all the update methods are synchronized on automobile LinkedHashmap. And correspondingly Automobile class is changed to implements Serializable. This can make sure that multiple users can update the same automobile atomically. 
+
+e. In your opinion, how many points should be added back?
+4.5
+
+
+
+
+
+
+======================== Unit4 ==========================
+a. What were you asked to change?-1 documentation. Please elaborate design choices in your documentation
+
+b. How many points were taken off?
+1
+
+c. What changes were made in what files?
+I improved the documentation.
+
+d. Show test cases for changes made (if applicable).
+Here is new documentation:
+In this unit, I added method of reading properties file in FileIO, so the client can read in properties file and send Properties object to the Server.
+The BuildAuto.java in server package implements IAutoServer interface, and the ProxyAutomobile.java actually implement IAutoServer’s methods. By this design, I can call an API(interface) to access ProxyAutomotive class method through BuildAuto, which can protect ProxyAutomobile to be accessed internally.
+The BuildCarModelOptions.java implements IAutoServer thread and associates with BuildAuto. I choose to do this because the server class can only interacts with BuildCarModelOptions instead of interacting with BuildAuto, which is a better design.
+The DefaultSocketClient.java implements the server session thread which can interact with client through object stream. The Server.java is the main server driver class with server socket. It uses a while loop to wait for accepting the client socket, so it can interact with multi client.
+
+For the client, in the ProxyAutomobile.java, the buildAuto method takes in a new parameter fileType. So the client can read in plain text file and also read in properties file then send properties object to server.
+The DefaultSocketClient.java implements the client session thread which can interact with server through object stream and interact with user through console. 
+
+e. In your opinion, how many points should be added back?
+1
+

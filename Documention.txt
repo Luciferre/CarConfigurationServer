@@ -1,0 +1,41 @@
+The structure of server is:
+- src
+	- model
+		- Automobile.java
+		- OptionSet.java
+	- util
+		- FileIO.java
+		- DatabaseIO.java (NEW!)
+	- scale
+		- EditOptions.java
+		- IEditThread.java
+	- adapter
+		- BuildAuto.java
+		- ICreateAuto.java
+		- IFixAuto.java
+		- IEditAuto.java
+		- IUpdateAuto.java
+		- ProxyAutomobile.java
+	- exception
+		- AutoException.java
+		- FixHelper.java
+	- server
+		- BuildCarModelOptions.java
+		- Server.java
+		- DefaultSocketClient.java
+		- IAutoServer.java
+		- SocketClientConstants.java
+		- SocketClientInterface.java
+	- database (NEW!)
+		- CreateOperation.java
+		- DeleteOperation.java
+		- UpdateOperation.java
+
+	
+Design Choices:
+
+In this unit, I add DatabaseIO.java in util package. It has some basic methods to interact with mysql database, like open connection, close connection, read sql command, create database and print database. So it’s reusable in CreateOperation.java, DeleteOperation.java and UpdateOperation.java because each operation needs to open connection and read sql command from properties file. 
+
+I choose to use auto_increment for id in database schema. Because that is more safe than increasing id manually. And I use “ON DELETE CASCADE” when creating table, which can make delete operation easier. When you delete a record in automobile table, the corresponding optionset and options will also be deleted. 
+
+For CreateOperation.java, DeleteOperation.java and UpdateOperation.java, I use PreparedStatement to read sql command from properties first and then set parameters. This can improve modifiability. You don’t need to repeat writing SQL.

@@ -1,0 +1,12 @@
+UseDB=USE automobile_db;
+CreateAutomobile=INSERT INTO automobile VALUES (0, ?, ?, ?);
+CreateOptionSet=INSERT INTO optionset VALUES (0, ?, ?);
+CreateOption=INSERT INTO options VALUES (0, ?, ?, ?);
+DeleteModel=DELETE FROM automobile WHERE (model = ?);
+FindModel=SELECT id FROM automobile WHERE (model = ?);
+FindOptionSet=SELECT id FROM optionset WHERE (name = ? AND autoid = ?);
+UpdateOptionPrice=UPDATE options SET price = ? WHERE (name = ? AND optionsetid = ?);
+UpdateOptionSetName=UPDATE optionset SET name = ? WHERE (name = ? AND autoid = ?);
+SelectAutomobile=SELECT * FROM automobile;
+SelectOptionSet=SELECT * FROM optionset;
+SelectOptions=SELECT * FROM options;
